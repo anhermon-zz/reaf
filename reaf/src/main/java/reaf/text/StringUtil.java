@@ -77,6 +77,17 @@ public class StringUtil {
         return out;
     }
 	
+	public static String nGramString(String sentence,int n) {
+		StringBuilder sb = new StringBuilder();
+		Set<String> ng = nGrams (sentence,n);
+		for(String str : ng){
+			if (sb.length() > 0)
+				sb.append(" ");
+			sb.append(str.replaceAll("\\s+", ""));
+		}
+		return sb.toString();
+	}
+	
 	/**
 	 * Converts String[] to tab (\t) delimited {@link String}
 	 * @param in String[]

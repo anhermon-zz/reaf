@@ -11,4 +11,5 @@ import java.util.ArrayList;
 public interface FileHandler {
 
 	public ArrayList<String[]> read(File file) throws Exception;
+	public String asString(File file) throws Exception;
 }

@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import reaf.text.StringUtil;
 /**
  * file handler implementation
  * @author Angel
@@ -31,12 +33,20 @@ public class FileHandlerImp implements FileHandler {
 		}
 		return out;
 	}
+	@Override
+	public String asString(File file) throws Exception {
+		StringBuilder out = new StringBuilder();
+		for(String[] row : read(file)){
+			out.append(out.length()>0?"\n":"");
+			out.append(StringUtil.arrayAsString(row));
+		}
+		return out.toString().trim().toLowerCase().replaceAll("[\\t\\n]+", " ");
+	}
 	public String getDelimiter() {
 		return delimiter;
 	}
 	public void setDelimiter(String delimiter) {
 		this.delimiter = delimiter;
 	}
-
 
 }
